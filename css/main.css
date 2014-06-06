@@ -28,11 +28,26 @@
 
 body {
   color: #555;
-  font-family: "Gafata", sans-serif;
+  font-family: "Helvetica Nueu", sans-serif;
   font-size: 18px;
-  font-weight: 400;
-  line-height: 1.5em;
+  font-weight: 300;
+  padding-left: 100px;
+  padding-right: 100px;
 }
+  
+  h1 {
+    font-size: 35px;
+  }
+
+  a {
+    text-decoration: none;
+    color: #555;
+    font-style: italic;
+  }
+
+  a:hover {
+    color: black;
+  }
 
 header {
   font-family: "Glober Free Font", sans-serif;
@@ -40,45 +55,10 @@ header {
   font-weight: 200;
   color: #111;
   text-align: center;
-  padding-top: 40px;
-  padding-bottom: 30px;
-  padding-left: 30px;
-  margin: -10px;
-  margin-bottom: 0px;
 }
 
   header span {
     font-weight: 500;
-  }
-
-nav {
-  font-family: "Gafata", sans-serif;
-  font-size: 25px;
-  font-weight: 200;
-  margin: -10px;
-}
-
-  nav ul {
-    list-style-type: none;
-    text-align: center;
-    margin: 0;
-    margin-bottom: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-
-  nav ul li {
-    display: inline;
-  }
-
-  nav ul li a {
-    text-decoration: none;
-    color: #111;
-    padding: 5px;
-  }
-
-  nav ul li a:hover {
-    text-decoration: underline;
   }
 
 aside {
