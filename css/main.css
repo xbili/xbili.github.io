@@ -54,23 +54,22 @@ header {
   font-size: 60px;
   font-weight: 200;
   color: #111;
-  text-align: center;
 }
 
   header span {
     font-weight: 500;
   }
 
-aside {
-  display: inline-block;
-  float: left;
-  height: 100%;
-  width: 30%;
-  padding-left: 20px;
-}
-
-  aside ul {
-    list-style-type: none;
+  header ul {
+  	list-style-type: none;
+  	font-size: 20px;
+  	margin: 0;
+  	padding: 0;
+  }
+	
+  header ul li {
+  	  display: inline;
+  	  font-weight: 500;
   }
 
 article {
@@ -79,7 +78,8 @@ article {
   width: 60%;
 }
 
-section {
-  padding: 20px;
-  padding-top: 0;
+.posts {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
 }
