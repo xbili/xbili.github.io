@@ -83,3 +83,7 @@ article {
 	margin: 0;
 	padding: 0;
 }
+
+#disqus_thread {
+	width: 60%;
+}
