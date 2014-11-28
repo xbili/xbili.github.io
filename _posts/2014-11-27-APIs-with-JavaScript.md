@@ -123,3 +123,5 @@ I've read somewhere that there is no such thing as `responseJSON` method for `XM
 That's about all that I learnt for APIs with JavaScript. Most of it was from [this][] course here by Codecademy. Really learnt quite a bit, despite playing around with APIs for quite a while. I'll **definitely** be playing around with a few APIs over the semester break, and let's see how much can I do with it. :)
 
 Hope to keep this learning streak going!
+
+[this]: http://www.codecademy.com/courses/javascript-beginner-en-EID4t/0/1

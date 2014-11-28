@@ -47,9 +47,8 @@ body {
   }
 
   a {
-    text-decoration: none;
+    text-decoration: underline;
     color: #555;
-    font-style: italic;
   }
 
   a:hover {
@@ -63,8 +62,11 @@ header {
   color: #111;
 }
 
+  header a {
+    text-decoration: none;
+  }
+
   .title {
-    font-style: none;
     color: #000;
   }
 
