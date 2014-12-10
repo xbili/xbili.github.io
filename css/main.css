@@ -82,6 +82,13 @@ header {
   	  font-weight: 500;
   }
 
+  #profile {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+
 article {
   display: inline-block;
   height: 100%;
