@@ -32,7 +32,7 @@
 }
 
 body {
-  color: #555;
+  color: rgb(34, 34, 34);
   font-family: "Helvetica Nueu", sans-serif;
   font-size: 18px;
   font-weight: 300;
@@ -43,31 +43,34 @@ body {
   
   h1 {
     font-size: 35px;
-    color: #000;
+    color: rgb(34, 34, 34);
   }
 
   a {
     text-decoration: underline;
-    color: #555;
+    color: rgb(38, 173, 228);
   }
 
   a:hover {
-    color: black;
+    color: rgb(100, 200, 240);
+    transition: color 0.5s ease;
   }
 
 header {
   font-family: "LemonMilk", sans-serif;
   font-size: 60px;
   font-weight: 200;
-  color: #111;
+  color: rgb(34, 34, 34);
 }
 
   header a {
+    color: rgb(34, 34, 34);
     text-decoration: none;
   }
 
-  .title {
-    color: #000;
+  header a:hover {
+    color: rgb(100, 100, 100);
+    transition: color 0.5s ease;
   }
 
   header ul {
@@ -83,8 +86,8 @@ header {
   }
 
   #profile {
-    height: 60px;
-    width: 60px;
+    height: 55px;
+    width: 55px;
     border-radius: 50%;
     margin-right: 10px;
   }
@@ -100,8 +103,8 @@ aside p {
 
   .postTitle {
     text-decoration: underline;
+    font-family: LemonMilk;
     font-size: 40px;
-    color: #555;
     margin-top: 18;
     margin-bottom: 0;
   }
