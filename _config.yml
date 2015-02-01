@@ -1,3 +1,4 @@
 name: XU BILI
-markdown: redcarpet
 pygments: true
+kramdown:
+  input: GFM
