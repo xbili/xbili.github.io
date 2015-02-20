@@ -1,9 +1,9 @@
 ---
 layout: default
-title: xbili - Posts 
+title: xbili
 ---
 
-{% for post in site.posts %}
+{% for post in site.posts limit:1 %}
 
   <div class="blog-post">
     <h2 class="blog-post-title">{{ post.title }}</h2>

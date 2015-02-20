@@ -18,7 +18,7 @@ Let's say we have four higher order functions:
 
 First we have a very simple **identity function** that returns the argument itself
 
->{% highlight javascript %}
+{% highlight javascript %}
 function id(x) {
 	return x;
 }
@@ -26,7 +26,7 @@ function id(x) {
 
 Then a **square function** which takes in a function and returns a function.
 
->{% highlight javascript %}
+{% highlight javascript %}
 function square(f) {
 	return function(x) {
 		return f(x * x);
@@ -36,7 +36,7 @@ function square(f) {
 
 Followed by an **add_one function** which takes in a fucntion and returns a function as well.
 
->{% highlight javascript %}
+{% highlight javascript %}
 function add_one(f) {
 	return function(x) {
 		return f(x + 1);
@@ -47,7 +47,7 @@ function add_one(f) {
 
 Lastly, a **twice function** which also takes in a function and (you guessed it) returns a function.
 
->{% highlight javascript %}
+{% highlight javascript %}
 function twice(f) {
 	return function(x) {
 		return f(f(x));
@@ -59,7 +59,7 @@ Here are some questions to make sense of what I mentioned above.
 
 We simply evaluate the results of these code in our head:
 
->{% highlight javascript %}
+{% highlight javascript %}
 (add_one(square(id)))(4);
 {% endhighlight %}
 
