@@ -6,7 +6,9 @@ title: xbili
 Hi there!
 =========
 
-My name is **Bili** and I am currently a freshman at the **National University of Singapore**, majoring in **Computer Science**.
+My name is **Bili** and I am a junior at the **National University of Singapore**, majoring in **Computer Science**.
+
+I am currently a Frontend Engineer Intern at ShopBack.
 
 Coding became a part of my life when I was serving in the military. Due to the large amount of time spent idling in bunks, I brought a book, *C++ Primer*, into camp and started to teach myself how to program. Weekends were then spent tinkering around with the computer at home, and the cycle continued until I completed my conscript service. 
 
