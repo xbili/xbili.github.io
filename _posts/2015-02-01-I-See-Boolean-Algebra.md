@@ -25,7 +25,7 @@ The *minterm* expression of the expression will be **A'.B**. i.e. **NOT A OR B**
 
 Then I drew out a circuit diagram for the entire logic:
 
-![Circuit Diagram]({{site.url}}/assets/circuit1.jpg)
+![Circuit Diagram]({{site.url}}/assets/dist/img/circuit1.jpg)
 
 **Voila!** There goes some application to what I learnt in real life. I showed this to my dad and he was impressed. (It's not easy to impress him)
 

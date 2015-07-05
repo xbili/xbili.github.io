@@ -44,7 +44,7 @@ CSS:
 
 
 This will give me:
-![img1]({{site.url}}/assets/030615-1.png)
+![img1]({{site.url}}/assets/dist/img/030615-1.png)
 
 In this case, `div.inner` will look for its offset parent, which is `div.outer` to apply `top`. In this case `div.inner` is **relative** to `div.outer`. If `div.outer` did not exist, then `div.inner`'s offset parent will be the `html`, which is the entire browser window. 
 
