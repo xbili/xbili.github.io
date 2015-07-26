@@ -6,7 +6,7 @@ title: xbili
 Hi there!
 =========
 
-My name is **Bili** and I am a junior at the **National University of Singapore**, majoring in **Computer Science**.
+My name is **Bili** and I am a sophomore at the **National University of Singapore**, majoring in **Computer Science**.
 
 I am currently a Frontend Engineer Intern at ShopBack.
 
