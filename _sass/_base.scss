@@ -35,6 +35,17 @@ ul, ol, dl, figure,
   margin-bottom: $spacing-unit / 2;
 }
 
+.title {
+  font-size: $title-size;
+  font-weight: 600;
+}
+
+.subtitle {
+  font-size: $subtitle-size;
+  font-weight: 300;
+  color: $subtitle-color;
+}
+
 
 
 /**

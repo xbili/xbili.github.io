@@ -1,5 +1,6 @@
 # Site settings
 title: XBILI
+subtitle: Always Be Coding
 email: me@xbili.com
 description: > # this means to ignore newlines until "baseurl:"
   Xu Bili. Computer Science Undergraduate at National University of Singapore.
