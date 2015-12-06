@@ -6,7 +6,7 @@ date: 2014-09-28
 
 This is my first technical post, in fact my first post in this blog. I reserve this place for CS related things only.
 
-Seniors often talk about 'leveling up' as developers, or as Computer Scientists. That's what just happened to me, I leveled up slightly.
+Seniors often talk about 'leveling up' as developers, or as Computer Scientists. That's what just happened to me, I leveled up slightly. <!---excerpt-break-->
 I understood higher order functions more than I ever did, and such an accomplishment is worth noting down. Here's what I learnt:
 
 > **Higher order functions are really just what changes the 'x' in our mathematical f(x) functions.**

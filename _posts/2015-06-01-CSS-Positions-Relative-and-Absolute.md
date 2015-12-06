@@ -4,7 +4,7 @@ title: "CSS Positions: Relative and Absolute"
 date: 2015-06-03
 ---
 
-I've already spent 2 weeks at ShopBack as a Frontend Engineer intern and came to realise that I still don't understand CSS well enough. A couple of days ago I was trying to overlay half of an image onto a banner. I found it so difficult to wrap my head around `absolute` and `relative` positioning. Josh, our DevOps engineer explained briefly to me how it works and why it works.
+I've already spent 2 weeks at ShopBack as a Frontend Engineer intern and came to realise that I still don't understand CSS well enough. A couple of days ago I was trying to overlay half of an image onto a banner. I found it so difficult to wrap my head around `absolute` and `relative` positioning. Josh, our DevOps engineer explained briefly to me how it works and why it works.<!---excerpt-break-->
 
 Relative
 ---

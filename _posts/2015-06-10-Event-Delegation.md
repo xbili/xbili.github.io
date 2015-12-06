@@ -6,7 +6,7 @@ date: 2015-06-10
 
 After finishing my work today, Jacky asked about listening to a dynamically added DOM element in a data table. 
 
-Having learnt event delegation (properly) recently, I was able to explain this with relative ease.
+Having learnt event delegation (properly) recently, I was able to explain this with relative ease.<!---excerpt-break-->
 
 What jQuery selectors do is listen to a DOM element with either a class name or an ID name. But what happens if the class or ID is not created on document load? 
 

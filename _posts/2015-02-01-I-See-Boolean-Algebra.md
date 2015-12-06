@@ -4,7 +4,7 @@ title: "I See Boolean Algebra"
 date: 2015-02-01
 ---
 
-Today is one of the rare times that I'm home from school during the semester, all thanks to a very bad flu that I've caught. So while staying at home, I overheard a discussion between my parents about how the double switch controlled our home ceiling fan. 
+Today is one of the rare times that I'm home from school during the semester, all thanks to a very bad flu that I've caught. So while staying at home, I overheard a discussion between my parents about how the double switch controlled our home ceiling fan. <!---excerpt-break-->
 
 After weeks of Computer Organisation class, I decided to put my *boolean algebra* skills to the test. Albeit a very easy one.
 

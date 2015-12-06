@@ -4,7 +4,7 @@ title: "First Hackathon Thoughts"
 date: 2015-01-25
 ---
 
-I participated in my first hackathon yesterday and even though I did not really build something useful or useless, I built something.
+I participated in my first hackathon yesterday and even though I did not really build something useful or useless, I built something.<!---excerpt-break-->
 
 [Pimory]
 ========

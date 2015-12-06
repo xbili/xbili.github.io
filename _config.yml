@@ -8,6 +8,7 @@ baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://xbili.com" # the base hostname & protocol for your site
 twitter_username: _xbili
 github_username:  xbili
+gems: [jekyll-read-more]
 
 # Build settings
 markdown: kramdown
