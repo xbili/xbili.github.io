@@ -4,7 +4,7 @@ title: "All that I've learnt"
 date: 2014-12-28
 ---
 
-I thought that since 2014 is ending, it'll be good to make a list of things that I've learnt in this year. Starting from the very top.
+I thought that since 2014 is ending, it'll be good to make a list of things that I've learnt in this year. Starting from the very top.<!---excerpt-break-->
 
 Web Design
 ==========

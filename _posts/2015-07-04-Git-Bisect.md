@@ -6,7 +6,7 @@ date: 2015-07-04
 
 I went into work the other morning with an overdue bug from the previous night and couldn't find a way to solve it. 
 
-Given the fact that the feature was written weeks ago, I couldn't remember which commit I broke the code in. Luckily, Josh came up (once more) and showed me this useful tool called `git bisect`. 
+Given the fact that the feature was written weeks ago, I couldn't remember which commit I broke the code in. Luckily, Josh came up (once more) and showed me this useful tool called `git bisect`. <!---excerpt-break-->
 
 What `git bisect` does is it performs a binary search (yeah, O(log n) guys) for the commit that screws things up and you are able to figure out what exactly went wrong. 
 

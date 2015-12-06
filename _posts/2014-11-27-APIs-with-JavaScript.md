@@ -8,7 +8,7 @@ Finals just ended yesterday with my CS1101S paper, and I dare say it was quite m
 
 Here's what I learnt today, using APIs with JavaScript. 
 
-First of all, we all have to learn about **HTTP** before we talk anything about web programming.
+First of all, we all have to learn about **HTTP** before we talk anything about web programming.<!---excerpt-break-->
 
 HTTP: Hypertext Transfer Protocol
 ---------------------------------

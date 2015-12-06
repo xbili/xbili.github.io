@@ -1,19 +1,26 @@
 ---
 layout: default
-title: xbili
 ---
 
-{% for post in site.posts limit:5 %}
+<div class="home">
 
-  <div class="blog-post">
-    <h2 class="blog-post-title">{{ post.title }}</h2>
-    <p class="blog-post-meta">{{ post.date | date_to_string }} by Xu Bili</p>
-    {{ post.content }}
-  </div> <!-- /.blog-post -->
+  <ul class="post-list">
+    {% for post in site.posts %}
 
-{% endfor %}
+      <header class="post-header">
+        <h1 class="post-title">{{ post.title }}</h1>
+        <p class="post-meta">{{ post.date | date: "%b %-d, %Y" }}{% if post.author %} • {{ post.author }}{% endif %}{% if post.meta %} • {{ post.meta }}{% endif %}</p>
+      </header>
 
-  <div class="col-md-12 text-center">
-    <a href="/posts.html">Read More</a>
-  </div>
+      <article class="post-content">
+        {{ post.content | get_post_excerpt }}
+        {% if post.content | post_contains_excerpt_tag %}
+          <a href="{{ post.url }}">Read more </a>→
+        {% endif %}
+      </article>
 
+    {% endfor %}
+  </ul>
+
+
+</div>
