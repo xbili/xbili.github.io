@@ -12,10 +12,10 @@ dl, dd, ol, ul, figure {
  */
 body {
   font-family: Open Sans, Arial, sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.5;
   font-weight: 300;
-  color: #505050;
+  color: #4A4A4A;
   background-color: #fdfdfd;
   -webkit-text-size-adjust: 100%; }
 
@@ -33,9 +33,9 @@ ul, ol, dl, figure,
   font-weight: 600; }
 
 .subtitle {
-  font-size: 24px;
-  font-weight: 300;
-  color: #c0c0c0; }
+  font-size: 18px;
+  font-weight: 200;
+  color: #9B9B9B; }
 
 /**
  * Images
@@ -44,6 +44,9 @@ img {
   max-width: 100%;
   vertical-align: middle; }
 
+.img-round {
+  border-radius: 50%; }
+
 /**
  * Figures
  */
@@ -51,7 +54,7 @@ figure > img {
   display: block; }
 
 figcaption {
-  font-size: 15.75px; }
+  font-size: 14px; }
 
 /**
  * Lists
@@ -78,7 +81,7 @@ a {
   a:visited {
     color: #1756a9; }
   a:hover {
-    color: #505050;
+    color: #4A4A4A;
     text-decoration: underline; }
 
 /**
@@ -169,15 +172,20 @@ pre {
   margin-left: 15px; }
 
 .site-nav {
-  float: right;
+  text-align: right;
   line-height: 56px; }
   .site-nav .menu-icon {
     display: none; }
   .site-nav .page-link {
-    color: #505050;
-    line-height: 1.5; }
+    color: #4A4A4A;
+    line-height: 1.5;
+    transition: 0.2s ease-in; }
     .site-nav .page-link:not(:first-child) {
       margin-left: 20px; }
+    .site-nav .page-link:hover {
+      text-decoration: none;
+      color: #2a7ae2;
+      transition: 0.2s ease-in; }
   @media screen and (max-width: 600px) {
     .site-nav {
       position: absolute;
@@ -209,6 +217,16 @@ pre {
       .site-nav .page-link {
         display: block;
         padding: 5px 10px; } }
+
+/**
+ * Site head
+ */
+.site-head {
+  text-align: center;
+  border-bottom: 1px solid #f2f2f2;
+  padding-bottom: 40px; }
+  .site-head img {
+    width: 10%; }
 
 /**
  * Site footer
@@ -278,7 +296,7 @@ pre {
     margin-bottom: 30px; }
 
 .post-meta {
-  font-size: 15.75px;
+  font-size: 14px;
   color: #828282; }
 
 .post-link {

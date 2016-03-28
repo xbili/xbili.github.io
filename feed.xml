@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>XBILI</title>
-    <description>Xu Bili. Computer Science Undergraduate at National University of Singapore.
+    <title>Bili Xu</title>
+    <description>Bili Xu. Computer Science Undergraduate @ National University of Singapore. Platform Engineer at EasilyDo.
 </description>
     <link>http://xbili.com/</link>
     <atom:link href="http://xbili.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 07 Dec 2015 00:07:59 +0800</pubDate>
-    <lastBuildDate>Mon, 07 Dec 2015 00:07:59 +0800</lastBuildDate>
+    <pubDate>Sun, 27 Mar 2016 22:52:42 -0700</pubDate>
+    <lastBuildDate>Sun, 27 Mar 2016 22:52:42 -0700</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -55,7 +55,7 @@
 &lt;p&gt;Really really useful!&lt;/p&gt;
 
 </description>
-        <pubDate>Sat, 04 Jul 2015 00:00:00 +0800</pubDate>
+        <pubDate>Sat, 04 Jul 2015 00:00:00 -0700</pubDate>
         <link>http://xbili.com/2015/07/04/Git-Bisect.html</link>
         <guid isPermaLink="true">http://xbili.com/2015/07/04/Git-Bisect.html</guid>
         
@@ -94,7 +94,7 @@
 &lt;p&gt;Really neat and useful trick! :0&lt;/p&gt;
 
 </description>
-        <pubDate>Wed, 10 Jun 2015 00:00:00 +0800</pubDate>
+        <pubDate>Wed, 10 Jun 2015 00:00:00 -0700</pubDate>
         <link>http://xbili.com/2015/06/10/Event-Delegation.html</link>
         <guid isPermaLink="true">http://xbili.com/2015/06/10/Event-Delegation.html</guid>
         
@@ -151,7 +151,7 @@
 
 &lt;p&gt;Pretty neat, hopefully I can explore more CSS in detail next time. Oh, and this blog needs a redesign.&lt;/p&gt;
 </description>
-        <pubDate>Wed, 03 Jun 2015 00:00:00 +0800</pubDate>
+        <pubDate>Wed, 03 Jun 2015 00:00:00 -0700</pubDate>
         <link>http://xbili.com/2015/06/03/CSS-Positions-Relative-and-Absolute.html</link>
         <guid isPermaLink="true">http://xbili.com/2015/06/03/CSS-Positions-Relative-and-Absolute.html</guid>
         
@@ -212,7 +212,7 @@
 
 &lt;p&gt;I don’t know why this mattered so much to me, but the fact that I was able to apply something I learnt in school to somewhere else &lt;strong&gt;excites me&lt;/strong&gt;.&lt;/p&gt;
 </description>
-        <pubDate>Sun, 01 Feb 2015 00:00:00 +0800</pubDate>
+        <pubDate>Sun, 01 Feb 2015 00:00:00 -0800</pubDate>
         <link>http://xbili.com/2015/02/01/I-See-Boolean-Algebra.html</link>
         <guid isPermaLink="true">http://xbili.com/2015/02/01/I-See-Boolean-Algebra.html</guid>
         
@@ -249,7 +249,7 @@
 &lt;p&gt;Till next year’s HacknRoll or the next hackathon, there’s much room for improvement!&lt;/p&gt;
 
 </description>
-        <pubDate>Sun, 25 Jan 2015 00:00:00 +0800</pubDate>
+        <pubDate>Sun, 25 Jan 2015 00:00:00 -0800</pubDate>
         <link>http://xbili.com/2015/01/25/First-Hackathon-Thoughts.html</link>
         <guid isPermaLink="true">http://xbili.com/2015/01/25/First-Hackathon-Thoughts.html</guid>
         
@@ -314,7 +314,7 @@
 &lt;p&gt;Till then, hope everyone had a great 2014, and here’s to a better 2015!&lt;/p&gt;
 
 </description>
-        <pubDate>Sun, 28 Dec 2014 00:00:00 +0800</pubDate>
+        <pubDate>Sun, 28 Dec 2014 00:00:00 -0800</pubDate>
         <link>http://xbili.com/2014/12/28/all-that-i've-learnt.html</link>
         <guid isPermaLink="true">http://xbili.com/2014/12/28/all-that-i've-learnt.html</guid>
         
@@ -445,7 +445,7 @@
 &lt;p&gt;Hope to keep this learning streak going!&lt;/p&gt;
 
 </description>
-        <pubDate>Thu, 27 Nov 2014 00:00:00 +0800</pubDate>
+        <pubDate>Thu, 27 Nov 2014 00:00:00 -0800</pubDate>
         <link>http://xbili.com/2014/11/27/APIs-with-JavaScript.html</link>
         <guid isPermaLink="true">http://xbili.com/2014/11/27/APIs-with-JavaScript.html</guid>
         
@@ -521,7 +521,7 @@ in mathematics.&lt;/p&gt;
 &lt;p&gt;That’s at least my method of seeing how things work, I might be wrong. I just wanted to note this down somewhere, because 
 it meant something to me that I leveled up! :D&lt;/p&gt;
 </description>
-        <pubDate>Sun, 28 Sep 2014 00:00:00 +0800</pubDate>
+        <pubDate>Sun, 28 Sep 2014 00:00:00 -0700</pubDate>
         <link>http://xbili.com/2014/09/28/higher-order-functions.html</link>
         <guid isPermaLink="true">http://xbili.com/2014/09/28/higher-order-functions.html</guid>
         
