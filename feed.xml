@@ -6,9 +6,82 @@
 </description>
     <link>http://xbili.com/</link>
     <atom:link href="http://xbili.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 27 Mar 2016 22:52:42 -0700</pubDate>
-    <lastBuildDate>Sun, 27 Mar 2016 22:52:42 -0700</lastBuildDate>
+    <pubDate>Wed, 06 Apr 2016 01:04:04 -0700</pubDate>
+    <lastBuildDate>Wed, 06 Apr 2016 01:04:04 -0700</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>Still Suck at Hackathons</title>
+        <description>&lt;p&gt;It’s been almost a year since I’ve written. I have grown pretty much as a
+developer, and as a person. It has been a really fruitful journey
+from developing Letterbox to making my way here in Silicon Valley, and I am
+thankful for every part of it.&lt;/p&gt;
+
+&lt;p&gt;Recently I took part in a Bitcoin hackathon organised by Berkeley, and realised
+that I still suck at these competitions. There is a constant stress and
+pressure on me, with or without teammates. Being the only developer (I joined
+with Regina) on the team, there are many expectations to be met.&lt;/p&gt;
+
+&lt;p&gt;Here are a few lessons learnt: &lt;!---excerpt-break--&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;dont-overestimate-my-abilities&quot;&gt;Don’t overestimate my abilities&lt;/h2&gt;
+
+&lt;p&gt;It first started off with playing around with Facebook’s Relay and GraphQL
+together with React Native, and slowly turned into just playing with React
+Native, with a very quick Flask setup.&lt;/p&gt;
+
+&lt;p&gt;The thought of putting together a polished, working and quality mobile app
+within a night by myself shouldn’t even have appeared in my head. Maybe if I
+had another developer working with me, I could delegate and somewhat come up
+with a polished product.&lt;/p&gt;
+
+&lt;p&gt;I overestimate my abilities too easily. Remember NUSHello? Yeah, that was a
+&lt;strong&gt;total disasater&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;when-working-with-something-new-read-and-expose-myself-extensively&quot;&gt;When working with something new, read and expose myself extensively&lt;/h2&gt;
+
+&lt;p&gt;I was working with React Native for the first time and I did not realize that
+Redux could work well with it. I would imagine the ease of simply implementing
+reducers, and calling actions. However this did not come into my mind and I
+ended up passing props all over the place in Vanilla React.&lt;/p&gt;
+
+&lt;p&gt;This could have easily been avoided by reading, and Googling up about things
+like that instead of jumping in.&lt;/p&gt;
+
+&lt;p&gt;But to be fair, I was totally bummed out. It was 12am when I started work on
+the client and it was a total mess.&lt;/p&gt;
+
+&lt;h2 id=&quot;find-teammates&quot;&gt;Find teammates&lt;/h2&gt;
+
+&lt;p&gt;I should stop thinking I can do things all by myself. Working with people
+is essential in winning hackathons and I need to open myself up to working
+with people more often.&lt;/p&gt;
+
+&lt;h2 id=&quot;if-all-else-fails-invision-is-my-best-friend&quot;&gt;If all else fails, Invision is my best friend&lt;/h2&gt;
+
+&lt;p&gt;Regina could design, and I could simply hook them all up with Invision and
+pitch with the prototype. But, instead of doing that we slept in and did not
+even return to the demo pitch. What a waste.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Always pitch next time!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;It was still a great great great experience overall since it was my first time
+messing around with mobile development, and I must say that React Native made
+things really easy to understand.&lt;/p&gt;
+
+&lt;p&gt;The idea I have in mind shall not be shared in this blog because I would love
+to polish it further before revealing any details about it. :)&lt;/p&gt;
+
+&lt;p&gt;Oh and did I mention, Google Code Jam is back. Let’s go solve some algorithm
+puzzles!&lt;/p&gt;
+
+</description>
+        <pubDate>Wed, 06 Apr 2016 00:00:00 -0700</pubDate>
+        <link>http://xbili.com/2016/04/06/Still-Suck-At-Hackathons.html</link>
+        <guid isPermaLink="true">http://xbili.com/2016/04/06/Still-Suck-At-Hackathons.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>Git Bisect</title>
