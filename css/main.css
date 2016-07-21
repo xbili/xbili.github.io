@@ -77,12 +77,13 @@ h1, h2, h3, h4, h5, h6 {
  */
 a {
   color: #2a7ae2;
-  text-decoration: none; }
+  text-decoration: none;
+  transition: 0.5s color ease-in-out; }
   a:visited {
     color: #1756a9; }
   a:hover {
     color: #4A4A4A;
-    text-decoration: underline; }
+    text-decoration: none; }
 
 /**
  * Blockquotes
@@ -345,6 +346,19 @@ pre {
     @media screen and (max-width: 800px) {
       .post-content h4 {
         font-size: 18px; } }
+
+.post-list-item {
+  display: flex;
+  padding: 10px; }
+  .post-list-item .post-list-title {
+    font-weight: 600;
+    flex: 5; }
+  .post-list-item .post-meta {
+    flex: 1;
+    text-align: right; }
+
+.post-list-item:not(:last-child) {
+  border-bottom: 1px solid #e8e8e8; }
 
 /**
  * Syntax highlighting styles

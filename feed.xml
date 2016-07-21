@@ -6,9 +6,42 @@
 </description>
     <link>http://xbili.com/</link>
     <atom:link href="http://xbili.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 29 Jun 2016 00:29:31 -0700</pubDate>
-    <lastBuildDate>Wed, 29 Jun 2016 00:29:31 -0700</lastBuildDate>
-    <generator>Jekyll v3.0.1</generator>
+    <pubDate>Wed, 20 Jul 2016 22:41:54 -0700</pubDate>
+    <lastBuildDate>Wed, 20 Jul 2016 22:41:54 -0700</lastBuildDate>
+    <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>Mature as an engineer, by communicating better</title>
+        <description>&lt;p&gt;Since the start of my (very limited) software engineering career, I’ve always strive to become a good engineer. One that follows best practices and write clean and efficient code.&lt;/p&gt;
+
+&lt;p&gt;It is only recently that I realise that the more I try to do so, the more disappointed I get. It is even more difficult when there isn’t an active senior engineer as a mentor. But wait, what exactly is a &lt;em&gt;senior engineer&lt;/em&gt;? Or rather, how does one &lt;strong&gt;earn&lt;/strong&gt; the title of a senior engineer?&lt;/p&gt;
+
+&lt;p&gt;We often talk of a senior engineer as one who has mastery of foundation domain knowledge and enough technical breadth to cover most roles needed in an organization. The ‘do-it-all’ guy who has 6-7 years of engineering experience, who can take ownership of projects and guide junior developers in the correct direction.&lt;/p&gt;
+
+&lt;p&gt;Then I came across &lt;a href=&quot;http://www.kitchensoap.com/2012/10/25/on-being-a-senior-engineer/&quot;&gt;this&lt;/a&gt;. A very concise guide to the traits of being a good senior engineer. One that I strive to work towards.&lt;/p&gt;
+
+&lt;p&gt;However, amidst all the Commandments and traits of a good senior engineer, I noticed they all revolve around a single lifeskill that I am lacking in.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Communication&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Learning how to communicate ideas and solutions to both technical and non-technical staff is an essential tool in a senior engineer’s toolbox. Many of the scenarios mentioned in the article are easily solved with adept communication skills.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;I’m going to admit that my communication skills need some work&lt;/em&gt;. I can convey my ideas to people, and they could understand me just fine (or so I think, although Regina gets really frustrated when she doesn’t understand me). But when it comes to technical discussions, &lt;strong&gt;I choke all the time&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Only by mastering this lifeskill that I can continue to level up as a developer, and also mature as a developer. C’mon, we all have to grow up and take up responsibilities far more than what we have now.&lt;/p&gt;
+
+&lt;p&gt;But how?&lt;/p&gt;
+
+&lt;p&gt;Starting at work would be a great idea. Put in more thought to how to present my thoughts to others, rather than blabbering whatever comes off my head.&lt;/p&gt;
+
+&lt;p&gt;Here’s to maturing as an engineer. Cheers. :)&lt;/p&gt;
+</description>
+        <pubDate>Wed, 20 Jul 2016 00:00:00 -0700</pubDate>
+        <link>http://xbili.com/2016/07/20/Mature-as-an-engineer-by-communicating-better.html</link>
+        <guid isPermaLink="true">http://xbili.com/2016/07/20/Mature-as-an-engineer-by-communicating-better.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>Half-time</title>
@@ -650,82 +683,6 @@ puzzles!&lt;/p&gt;
         <pubDate>Thu, 27 Nov 2014 00:00:00 -0800</pubDate>
         <link>http://xbili.com/2014/11/27/APIs-with-JavaScript.html</link>
         <guid isPermaLink="true">http://xbili.com/2014/11/27/APIs-with-JavaScript.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Higher Order Functions</title>
-        <description>&lt;p&gt;This is my first technical post, in fact my first post in this blog. I reserve this place for CS related things only.&lt;/p&gt;
-
-&lt;p&gt;Seniors often talk about ‘leveling up’ as developers, or as Computer Scientists. That’s what just happened to me, I leveled up slightly. &lt;!---excerpt-break--&gt;
-I understood higher order functions more than I ever did, and such an accomplishment is worth noting down. Here’s what I learnt:&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;Higher order functions are really just what changes the ‘x’ in our mathematical f(x) functions.&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;It took me long enough to figure that out, and fortunately I figured it out before mid-terms hit me with lambda calculus. 
-Here’s an example and an explanation of what goes on in my head when I deal with such questions.&lt;/p&gt;
-
-&lt;p&gt;Let’s say we have four higher order functions:&lt;/p&gt;
-
-&lt;p&gt;First we have a very simple &lt;strong&gt;identity function&lt;/strong&gt; that returns the argument itself&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Then a &lt;strong&gt;square function&lt;/strong&gt; which takes in a function and returns a function.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;square&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;	
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Followed by an &lt;strong&gt;add_one function&lt;/strong&gt; which takes in a fucntion and returns a function as well.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;add_one&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Lastly, a &lt;strong&gt;twice function&lt;/strong&gt; which also takes in a function and (you guessed it) returns a function.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;twice&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Here are some questions to make sense of what I mentioned above.&lt;/p&gt;
-
-&lt;p&gt;We simply evaluate the results of these code in our head:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;add_one&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;square&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;I like to do it in steps. So first: ignore the &lt;code class=&quot;highlighter-rouge&quot;&gt;(4)&lt;/code&gt;. It’s just an argument. We deal with our functions first.
-We now know that by passing &lt;code class=&quot;highlighter-rouge&quot;&gt;id&lt;/code&gt; into &lt;code class=&quot;highlighter-rouge&quot;&gt;square&lt;/code&gt;, we’ll get &lt;code class=&quot;highlighter-rouge&quot;&gt;f(x * x)&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;But what is &lt;code class=&quot;highlighter-rouge&quot;&gt;f&lt;/code&gt;? Like I mentioned above, it’s very similiar to mathematics. We’ll treat &lt;code class=&quot;highlighter-rouge&quot;&gt;f&lt;/code&gt; as just a &lt;strong&gt;function&lt;/strong&gt;. Like how &lt;code class=&quot;highlighter-rouge&quot;&gt;f(x)&lt;/code&gt; is the most common function we see
-in mathematics.&lt;/p&gt;
-
-&lt;p&gt;So this function &lt;code class=&quot;highlighter-rouge&quot;&gt;square(id)&lt;/code&gt; would give you &lt;code class=&quot;highlighter-rouge&quot;&gt;x * x&lt;/code&gt;. (Remember, ignore the f!)&lt;/p&gt;
-
-&lt;p&gt;Now we pass this function into &lt;code class=&quot;highlighter-rouge&quot;&gt;add_one&lt;/code&gt;, it’ll return you &lt;code class=&quot;highlighter-rouge&quot;&gt;(x + 1) * (x + 1)&lt;/code&gt;. See how it worked? You’re essentially modifying the x in f(x).&lt;/p&gt;
-
-&lt;p&gt;When we pass 4 into the function, &lt;code class=&quot;highlighter-rouge&quot;&gt;4 * 4&lt;/code&gt; is returned. &lt;strong&gt;much wow&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Whenever we see such patterns in the higher order functions we’re dealing with, this method makes things much easier.&lt;/p&gt;
-
-&lt;p&gt;That’s at least my method of seeing how things work, I might be wrong. I just wanted to note this down somewhere, because 
-it meant something to me that I leveled up! :D&lt;/p&gt;
-</description>
-        <pubDate>Sun, 28 Sep 2014 00:00:00 -0700</pubDate>
-        <link>http://xbili.com/2014/09/28/higher-order-functions.html</link>
-        <guid isPermaLink="true">http://xbili.com/2014/09/28/higher-order-functions.html</guid>
         
         
       </item>
