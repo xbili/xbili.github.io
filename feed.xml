@@ -6,9 +6,453 @@
 </description>
     <link>http://xbili.com/</link>
     <atom:link href="http://xbili.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 20 Jul 2016 22:41:54 -0700</pubDate>
-    <lastBuildDate>Wed, 20 Jul 2016 22:41:54 -0700</lastBuildDate>
+    <pubDate>Sat, 08 Oct 2016 00:12:48 -0700</pubDate>
+    <lastBuildDate>Sat, 08 Oct 2016 00:12:48 -0700</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>Lets Write Isomorphic React</title>
+        <description>&lt;p&gt;﻿—
+layout: post
+title: “Let’s Write an Isomorphic React App!”
+date: 2016-10-07
+—&lt;/p&gt;
+
+&lt;h1 id=&quot;lets-write-isomorphic-react-redux&quot;&gt;Let’s Write Isomorphic React Redux!&lt;/h1&gt;
+&lt;p&gt;I’ve been playing around with React for quite a bit now, and gotten pretty comfortable with Redux. I remember my first experience with React during the first assignment of CS3216. We wanted to write a simple chat application as an isomorphic Redux application, and I was leading the frontend development. It ended up in becoming a behemoth of hacks, and we eventually moved away from Redux and into Reflux. (Which wasn’t any better).&lt;/p&gt;
+
+&lt;p&gt;Fast-forward two years, I’ve been through some ups and downs with Ionic Framework for Letterbox, and a bit of React.js at work for a small data analysis tool. I think I’m ready to tackle isomorphic apps again.&lt;/p&gt;
+
+&lt;p&gt;Let’s start from the beginning shall we, none of that &lt;code class=&quot;highlighter-rouge&quot;&gt;react-redux-boilerplate&lt;/code&gt; thing going on here. Everything is written from scratch.&lt;/p&gt;
+
+&lt;p&gt;(Also, it’s a Friday evening. I would love to spend time to work on something that isn’t school related. The linear algebra from Stanford’s CS229 is killing me right now)&lt;/p&gt;
+
+&lt;h2 id=&quot;get-started&quot;&gt;Get Started!&lt;/h2&gt;
+&lt;p&gt;I’ll be following &lt;a href=&quot;https://codingbox.io/react-for-beginners-creating-isomorphic-react-redux-app-and-deploying-it-on-heroku-6a313f8f3693#.rk73c4upz&quot;&gt;this article&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;First off, I’ll need to create a new Node.js app and also some eslint goodness. Right after doing &lt;code class=&quot;highlighter-rouge&quot;&gt;npm init&lt;/code&gt;, here’s a few dependencies to install.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm install —-save express
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The article did mention about &lt;code class=&quot;highlighter-rouge&quot;&gt;webpack&lt;/code&gt; and also &lt;code class=&quot;highlighter-rouge&quot;&gt;http-proxy&lt;/code&gt;. Not sure what &lt;code class=&quot;highlighter-rouge&quot;&gt;http-proxy&lt;/code&gt; is for, but I’m pretty sure &lt;code class=&quot;highlighter-rouge&quot;&gt;webpack&lt;/code&gt; is needed for all those React development.I’ll go ahead and install &lt;code class=&quot;highlighter-rouge&quot;&gt;webpack&lt;/code&gt; first.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm install —-save webpack
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Great catch by the article to install it as a production dependency rather than a devDependency. I’ve came across this problem when deploying React applications on Heroku previously, &lt;code class=&quot;highlighter-rouge&quot;&gt;webpack&lt;/code&gt; is actually needed to build the app in production during the build process.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;webpack-dev-server&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;webpack-hot-middleware&lt;/code&gt; are both great goodies for React development too. Install them as devDependencies.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm install —-save-dev webpack-dev-server webpack-hot-middleware
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;For the isomorphic app, we will need 2 services. One for rendering the template, the other for API calls. This makes it easier to scale in production. Let’s create the two entry point for the server.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;./bin/api.js&lt;/code&gt;
+    /* eslint no-console: 0 */&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import express from &#39;express&#39;;
+
+import { apiPort } from &#39;../config/env&#39;;
+
+const app = express();
+
+app.get(&#39;/api&#39;, (req, res) =&amp;gt; {
+  res.send(&#39;Hello world!&#39;);
+});
+
+app.listen(apiPort, err =&amp;gt; {
+  if (err) {
+    console.error(err);
+  } else {
+    console.info(`API listening on port ${apiPort}!`);
+  }
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;./bin/server.js&lt;/code&gt;
+    /* eslint no-console:0 */&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import express from &#39;express&#39;;
+import http from &#39;http&#39;;
+import httpProxy from &#39;http-proxy&#39;;
+import path from &#39;path&#39;;
+
+import { port, apiHost, apiPort } from &#39;../config/env&#39;;
+
+const targetUrl = `http://${apiHost}:${apiPort}`;
+const app = express();
+const server = new http.Server(app);
+const proxy = httpProxy.createProxyServer({
+  target: targetUrl,
+  ws: true,
+});
+
+app.use(&#39;/&#39;, express.static(path.resolve(__dirname, &#39;../public&#39;)))
+
+app.use(&#39;/api&#39;, (req, res) =&amp;gt; {
+  proxy.web(req, res, { target: `${targetUrl}/api` });
+});
+
+server.on(&#39;upgrade&#39;, (req, socket, head) =&amp;gt; {
+  proxy.ws(req, socket, head);
+});
+
+proxy.on(&#39;error&#39;, (error, req, res) =&amp;gt; {
+  if (error.code !== &#39;ECONNRESET&#39;) {
+    console.error(&#39;proxy error&#39;, error);
+  }
+
+  if (!res.headersSent) {
+    res.writeHead(500, { &#39;content-type&#39;: &#39;application/json&#39; });
+  }
+
+  const json = { error: &#39;proxy_error&#39;, reason: error.message };
+
+  res.end(JSON.stringify(json));
+});
+
+app.listen(port, err =&amp;gt; {
+  if (err) {
+    console.error(err);
+  } else {
+    console.info(`Server listening on ${port}!`);
+  }
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Oh hey, it seems like we’re using &lt;code class=&quot;highlighter-rouge&quot;&gt;http-proxy&lt;/code&gt; here! Let’s install that.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm install —-save http-proxy
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Now let’s break the two entry points down. Each file written is basically to start a service, one for API, and one for the template rendering server.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;http-proxy&lt;/code&gt; seems to be used for handling &lt;code class=&quot;highlighter-rouge&quot;&gt;websockets&lt;/code&gt; requests, as shown by the config &lt;code class=&quot;highlighter-rouge&quot;&gt;ws: true&lt;/code&gt;. Still not very sure what this does. But I’ll let it pass for now.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;console.info&lt;/code&gt; is also something that I have not seen before. Seems like a non-standard method. But that shouldn’t matter that much. This isn’t browser front facing code.&lt;/p&gt;
+
+&lt;p&gt;Now that we got this out of the way, let’s setup our &lt;code class=&quot;highlighter-rouge&quot;&gt;webpack-dev-server&lt;/code&gt;! Hot-reloading and goodness ensues…&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;./bin/webpack-dev-server.js&lt;/code&gt;
+    /* eslint import/no-extraneous-dependencies: 0, no-console: 0 */&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import express from &#39;express&#39;;
+import webpack from &#39;webpack&#39;;
+
+const { host, port, webpackPort } = require(&#39;../config/env&#39;);
+
+const webpackConfig = {};
+
+const compiler = webpack(webpackConfig);
+
+const serverOptions = {
+  contentBase: `http://${host}:${port}`,
+  quiet: true,
+  noInfo: true,
+  hot: true,
+  inline: true,
+  lazy: false,
+  publicPath: webpackConfig.output.publicPath,
+  headers: { &#39;Access-Control-Allow-Origin&#39;: &#39;*&#39; },
+  stats: { colors: true },
+};
+
+const app = express();
+
+app.use(require(&#39;webpack-dev-middleware&#39;)(compiler, serverOptions));
+app.use(require(&#39;webpack-hot-middleware&#39;)(compiler));
+
+app.listen(webpackPort, err =&amp;gt; {
+  if (err) {
+    console.error(err);
+  } else {
+    console.log(`Webpack development server listening on port ${webpackPort}`);
+  }
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Setting up a &lt;code class=&quot;highlighter-rouge&quot;&gt;webpack-dev-server&lt;/code&gt; is still pretty standard, similar to non-isomorphic React.&lt;/p&gt;
+
+&lt;p&gt;Now we need &lt;code class=&quot;highlighter-rouge&quot;&gt;concurrently&lt;/code&gt; to run both services together.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm install —-save concurrently
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;I’m pretty sure Node.js &lt;code class=&quot;highlighter-rouge&quot;&gt;harmony&lt;/code&gt; mode supports most of ES6/7 features right now, but just to be sure (we’re deploying a production app, eh!), I’m still going to rely on Babel. Here’s the ton of Babel goodies to install.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm install —-save babel-loader babel-cli babel-preset-latest babel-preset-react babel-preset-stage-0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Note that I saved it as dependency instead of dev dependency too, for the same reasons as saving &lt;code class=&quot;highlighter-rouge&quot;&gt;webpack&lt;/code&gt; as a core dependency.&lt;/p&gt;
+
+&lt;p&gt;Here’s the corresponding &lt;code class=&quot;highlighter-rouge&quot;&gt;.babelrc&lt;/code&gt;:
+    {
+        “presets”: [
+            “latest”,
+            “stage-0”,
+            “react”
+        ]
+    }&lt;/p&gt;
+
+&lt;p&gt;Let’s update &lt;code class=&quot;highlighter-rouge&quot;&gt;package.json&lt;/code&gt; to run our servers concurrently too:
+    “scripts”: {
+      “start”: “concurrently –kill-others &quot;npm run start-api&quot; &quot;npm run start-server&quot; &quot;npm run webpack-dev-server&quot;”,
+      “start-api”: “NODE_ENV=development babel-node ./bin/api.js”,
+      “start-server”: “NODE_ENV=development babel-node ./bin/server.js”,
+      “webpack-dev-server”: “NODE_ENV=development babel-node ./bin/webpack-dev-server.js”,
+      “test”: “echo &quot;Error: no test specified&quot; &amp;amp;&amp;amp; exit 1”
+    }&lt;/p&gt;
+
+&lt;p&gt;That’s pretty much all we need to get started. Quite a bit eh? The next part comes the main headache. &lt;strong&gt;Webpack&lt;/strong&gt;. Remember the &lt;code class=&quot;highlighter-rouge&quot;&gt;webpack.config&lt;/code&gt; that we magically defined? Yeah.&lt;/p&gt;
+
+&lt;h2 id=&quot;webpack-configuration&quot;&gt;Webpack Configuration&lt;/h2&gt;
+&lt;p&gt;I had to take a walk before moving on to this section. I know it will tedious.&lt;/p&gt;
+
+&lt;p&gt;Let’s begin.&lt;/p&gt;
+
+&lt;p&gt;First up, we need an entry file. Let’s create &lt;code class=&quot;highlighter-rouge&quot;&gt;./src/index.js&lt;/code&gt;.
+    console.log(‘Hello world!’);&lt;/p&gt;
+
+&lt;p&gt;Let’s create a development webpack config first.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;webpack/dev.config.js&lt;/code&gt;
+    const path = require(‘path’);
+    const webpack = require(‘webpack’);&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;const assetsPath = path.resolve(__dirname, &#39;../public/assets&#39;);
+
+const { webpackHost, webpackPort } = require(&#39;../config/env&#39;);
+
+module.exports = {
+  devtool: &#39;inline-source-map&#39;, // sourcemap added as data url to js file
+  context: path.resolve(__dirname, &#39;..&#39;), // base directory
+  entry: {
+    main: [
+      `webpack-hot-middleware/client?path=http://${webpackHost}:${webpackPort}/__webpack_hmr`, // hot reloading
+      &#39;./src/index.js&#39;,
+    ],
+  },
+  output: {
+    path: assetsPath,
+    filename: &#39;[name].js&#39;, // for chunking
+    chunkFilename: &#39;[name]-[chunkhash].js&#39;, // for long term caching
+    publicPath: `http://${webpackHost}:${webpackPort}/assets/`,
+  },
+  module: {
+    loaders: [
+      {
+        test: /\.jsx?$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: &#39;babel&#39;,
+      },
+    ],
+  },
+  progress: true, // show progress bar
+  resolve: {
+    modulesDirectories: [
+      &#39;node_modules&#39;,
+      &#39;src&#39;,
+      // add more resolve directories here to prevent nested ../../..
+    ],
+    extensions: [&#39;&#39;, &#39;.json&#39;, &#39;.js&#39;, &#39;.jsx&#39;],
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(), // hot reloading
+    new webpack.IgnorePlugin(/webpack-stats\.json$/), // (???) still not very sure what this does...
+  ],
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;As I’ve done this a couple of times, I understand some of the configurations. Those that are new will be commented.&lt;/p&gt;
+
+&lt;p&gt;Cool, now running &lt;code class=&quot;highlighter-rouge&quot;&gt;npm start&lt;/code&gt; will start both services, and heading to either &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:3001&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:3002&lt;/code&gt; will return ‘Hello world!’ on the browser.&lt;/p&gt;
+
+&lt;h2 id=&quot;react&quot;&gt;React&lt;/h2&gt;
+&lt;p&gt;Now that we got configuration out of the way, it’s time to work on React. (Couple of configurations to take note of too)&lt;/p&gt;
+
+&lt;p&gt;Install ALL the React dependencies that we need right now!&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm install -—save react react-dom serialize-javascript redux react-redux react-router react-router-redux pretty-error
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Only a few new packages that I have never used before:
+1. &lt;code class=&quot;highlighter-rouge&quot;&gt;serialize-javascript&lt;/code&gt; - meant to serialize the store for future deserialization on the client
+2. &lt;code class=&quot;highlighter-rouge&quot;&gt;pretty-error&lt;/code&gt; - self explanatory&lt;/p&gt;
+
+&lt;p&gt;Time to write the first React component that renders the entire HTML markup for our app!&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;src/layouts/Default.jsx&lt;/code&gt;
+    /* eslint react/prefer-stateless-function: 0, react/no-danger: 0, react/forbid-prop-types: 0 */&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import React, { Component } from &#39;react&#39;;
+import ReactDOM from &#39;react-dom/server&#39;; // For server use!
+import serialize from &#39;serialize-javascript&#39;;
+import { webpackHost, webpackPort } from &#39;../../config/env&#39;;
+
+export default class Default extends Component {
+  render() {
+    const { component, store } = this.props;
+    const content = component ? ReactDOM.renderToString(component) : &#39;&#39;;
+
+    return (
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+          &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Hello, Supperfly!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+          &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;root&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;dangerouslySetInnerHTML=&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+          &lt;span class=&quot;nt&quot;&gt;&amp;lt;script
+            &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{&lt;/span&gt;
+              &lt;span class=&quot;na&quot;&gt;process&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;NODE_ENV =&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;development&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&#39;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;?&lt;/span&gt;
+              &lt;span class=&quot;err&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;http:&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;//${&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;webpackHost&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;webpackPort&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;}/&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;assets&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;js&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;`&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&#39;/&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;assets&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;js&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&#39;&lt;/span&gt;
+            &lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;charSet=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;
+          &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;
+        &amp;lt;/body&amp;gt;
+      &amp;lt;/html&amp;gt;
+    );
+  }
+}
+
+Default.propTypes = {
+  component: React.PropTypes.node,
+  store: React.PropTypes.object,
+};
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This still looks very familiar, a normal React component, with different locations to fetch static assets from depending on the environment the app is running in.&lt;/p&gt;
+
+&lt;p&gt;Here comes a slightly more hairy part, updating &lt;code class=&quot;highlighter-rouge&quot;&gt;server.js&lt;/code&gt;. This is only hairy for isomorphic apps, because the server has the speak the language of having a ‘store’, and also the concept of ‘routing’.&lt;/p&gt;
+
+&lt;p&gt;Here’s the end product of &lt;code class=&quot;highlighter-rouge&quot;&gt;bin/server.js&lt;/code&gt;
+    /* eslint no-console:0 */&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import express from &#39;express&#39;;
+import http from &#39;http&#39;;
+import httpProxy from &#39;http-proxy&#39;;
+import path from &#39;path&#39;;
+import PrettyError from &#39;pretty-error&#39;;
+import React from &#39;react&#39;;
+import ReactDOM from &#39;react-dom/server&#39;; // for server use!
+import { match, RouterContext } from &#39;react-router&#39;; // ?
+import { syncHistoryWithStore } from &#39;react-router-redux&#39;;
+import createHistory from &#39;react-router/lib/createMemoryHistory&#39;; // ?
+import { Provider } from &#39;react-redux&#39;;
+
+import {
+  createStore
+} from &#39;../src/redux/createStore&#39;;
+import getRoutes from &#39;../src/routes&#39;;
+import Default from &#39;../src/layouts/Default&#39;;
+import { port, apiHost, apiPort } from &#39;../config/env&#39;;
+
+const targetUrl = `http://${apiHost}:${apiPort}`;
+const pretty = new PrettyError();
+const app = express();
+const server = new http.Server(app);
+const proxy = httpProxy.createProxyServer({
+  target: targetUrl,
+  ws: true,
+});
+
+app.use(&#39;/&#39;, express.static(path.resolve(__dirname, &#39;../public&#39;)));
+
+app.use(&#39;/api&#39;, (req, res) =&amp;gt; {
+  proxy.web(req, res, { target: `${targetUrl}/api` });
+});
+
+server.on(&#39;upgrade&#39;, (req, socket, head) =&amp;gt; {
+  proxy.ws(req, socket, head);
+});
+
+proxy.on(&#39;error&#39;, (error, req, res) =&amp;gt; {
+  if (error.code !== &#39;ECONNRESET&#39;) {
+    console.error(&#39;proxy error&#39;, error);
+  }
+
+  if (!res.headersSent) {
+    res.writeHead(500, { &#39;content-type&#39;: &#39;application/json&#39; });
+  }
+
+  const json = { error: &#39;proxy_error&#39;, reason: error.message };
+
+  res.end(JSON.stringify(json));
+});
+
+app.use((req, res) =&amp;gt; {
+  const memoryHistory = createHistory(req.originalUrl);
+  const store = createStore(memoryHistory);
+  const history = syncHistoryWithStore(memoryHistory, store);
+
+  function hydrateOnClient() {
+    res.send(`&amp;lt;!doctype html&amp;gt;${ReactDOM.renderToString(&amp;lt;Default store={store} /&amp;gt;)}`);
+
+    match({ history, routes: getRoutes(store), location: req.originalUrl }, (error, redirectLocation, renderProps) =&amp;gt; {
+      if (redirectLocation) {
+        // It&#39;s a redirect route, just do a simple redirect
+        res.redirect(redirectLocation.pathname + redirectLocation.search);
+      } else if (error) {
+        console.error(&#39;ROUTER ERROR:&#39;, pretty.render(error));
+        res.status(500);
+        hydrateOnClient();
+      } else if (renderProps) {
+        // Props you should pass to the routing context if the route matched.
+        const component = (
+          &amp;lt;Provider store={store} key=&quot;provider&quot;&amp;gt;
+            &amp;lt;RouterContext {...renderProps} /&amp;gt;
+          &amp;lt;/Provider&amp;gt;
+        )
+
+        res.status(200);
+
+        global.navigator = { userAgent: req.headers[&#39;user-agent&#39;] }; // ?
+
+        res.send(`&amp;lt;!doctype html&amp;gt;${ReactDOM.renderToStaticMarkup(&amp;lt;Default component={component} store={store} /&amp;gt;)}`);
+      } else {
+        res.status(404).send(&#39;Not found&#39;);
+      }
+    });
+  }
+})
+
+app.listen(port, err =&amp;gt; {
+  if (err) {
+    console.error(err);
+  } else {
+    console.info(`Server listening on ${port}!`);
+  }
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;That’s a really long file. As always, I annotated some of the things I have never seen before in the code itself. (With several question marks)&lt;/p&gt;
+
+&lt;p&gt;This is good progress for today, at least I have a basic boilerplate code setup for development, and would want to configure it for more robust development processes in time to come.&lt;/p&gt;
+
+&lt;p&gt;The next step will be to create React containers for my app, and it shall be done another day. It’s 12am and I have a sleep at midnight policy right now.&lt;/p&gt;
+
+&lt;p&gt;Hopefully more progress can be made this weekend! Time to push the code and hit the sacks. :)&lt;/p&gt;
+</description>
+        <pubDate>Fri, 07 Oct 2016 00:00:00 -0700</pubDate>
+        <link>http://xbili.com/2016/10/07/Lets-Write-Isomorphic-React.html</link>
+        <guid isPermaLink="true">http://xbili.com/2016/10/07/Lets-Write-Isomorphic-React.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>Mature as an engineer, by communicating better</title>
@@ -552,137 +996,6 @@ puzzles!&lt;/p&gt;
         <pubDate>Sun, 28 Dec 2014 00:00:00 -0800</pubDate>
         <link>http://xbili.com/2014/12/28/all-that-i've-learnt.html</link>
         <guid isPermaLink="true">http://xbili.com/2014/12/28/all-that-i've-learnt.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>APIs with JavaScript</title>
-        <description>&lt;p&gt;Finals just ended yesterday with my CS1101S paper, and I dare say it was quite manageable.&lt;/p&gt;
-
-&lt;p&gt;Here’s what I learnt today, using APIs with JavaScript.&lt;/p&gt;
-
-&lt;p&gt;First of all, we all have to learn about &lt;strong&gt;HTTP&lt;/strong&gt; before we talk anything about web programming.&lt;!---excerpt-break--&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;http-hypertext-transfer-protocol&quot;&gt;HTTP: Hypertext Transfer Protocol&lt;/h2&gt;
-
-&lt;p&gt;HTTP is actually a set of rules for getting something from one place to another. So what are these ‘places’?&lt;/p&gt;
-
-&lt;p&gt;They are split into two types:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Servers: Other computers on the Internet&lt;/li&gt;
-  &lt;li&gt;Clients: That’s us.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;So when a &lt;em&gt;HTTP request&lt;/em&gt; is made, the request zips through the Internet until it finds the right server to handle that &lt;em&gt;request&lt;/em&gt;. Then the server would send the &lt;em&gt;response&lt;/em&gt; back to you.&lt;/p&gt;
-
-&lt;p&gt;I’ll mention more about this &lt;em&gt;request/response&lt;/em&gt; later on.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;Client/Server relationship is a prerequisite of a set of principles called Representational State Transfer (REST)&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;What this means is that every link clicked on the webpage would result in a &lt;em&gt;state transition&lt;/em&gt;. Means it simply brings you to the next page, representing the current &lt;em&gt;state&lt;/em&gt; of the application.&lt;/p&gt;
-
-&lt;p&gt;When an application or webpage follow this type of &lt;em&gt;page-to-page&lt;/em&gt; navigation, we start to follow the &lt;em&gt;REST principles&lt;/em&gt;. And we call these applications &lt;strong&gt;RESTful&lt;/strong&gt;. (Finally, this term that is so commonly seen makes sense)&lt;/p&gt;
-
-&lt;p&gt;Right, so we got all of that HTTP stuff settled, let’s move on to find out what are &lt;em&gt;APIs&lt;/em&gt; (yet another commonly heard name all over the Internet)&lt;/p&gt;
-
-&lt;h2 id=&quot;api-application-programming-interface&quot;&gt;API: Application Programming Interface&lt;/h2&gt;
-
-&lt;p&gt;In English, &lt;em&gt;APIs&lt;/em&gt; specifies the ways a program can interact with an application.&lt;/p&gt;
-
-&lt;p&gt;We mentioned about &lt;em&gt;RESTful applications&lt;/em&gt; above, so for an API to be RESTful, it must fulfil certain criterias:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;It has to seperate the &lt;em&gt;client&lt;/em&gt; from the &lt;em&gt;server&lt;/em&gt;&lt;/li&gt;
-  &lt;li&gt;It cannot &lt;em&gt;hold state&lt;/em&gt; between requests: meaning no information is stored by server from request to request&lt;/li&gt;
-  &lt;li&gt;It has to use &lt;em&gt;HTTP&lt;/em&gt; and &lt;em&gt;HTTP methods&lt;/em&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;(There are many other criterias, but for now, these would do)&lt;/p&gt;
-
-&lt;p&gt;Right, I mentioned that I’ll talk more about &lt;em&gt;request/response&lt;/em&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;making-a-request&quot;&gt;Making a REQUEST&lt;/h2&gt;
-
-&lt;p&gt;Here’s the code sample for making a request:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;xhr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;XMLHttpRequest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;xhr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;GET&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;www.blah.com&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;xhr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;send&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Before I go into what these means, we have to know the four verbs of HTTP methods:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;strong&gt;GET&lt;/strong&gt;: &lt;em&gt;retrieves&lt;/em&gt; information form specified source&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;POST&lt;/strong&gt;: &lt;em&gt;sends&lt;/em&gt; new information to specified source&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;PUT&lt;/strong&gt;: &lt;em&gt;updates&lt;/em&gt; exisiting information to specified source&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;DELETE&lt;/strong&gt;: &lt;em&gt;removes&lt;/em&gt; existing information from specified source&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;These are methods are named really intuitively, I like it.&lt;/p&gt;
-
-&lt;p&gt;Now let’s go into the code:&lt;/p&gt;
-
-&lt;p&gt;First, &lt;code class=&quot;highlighter-rouge&quot;&gt;xhr&lt;/code&gt; stores a new &lt;code class=&quot;highlighter-rouge&quot;&gt;XMLHttpRequest&lt;/code&gt; object, and this object contains various methods.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;open&lt;/code&gt; defines the request, first parameter being the HTTP verb that you’re about to execute, followed by the server, then here’s the last parameter which I still understand quite vaguely. &lt;code class=&quot;highlighter-rouge&quot;&gt;false&lt;/code&gt; means that this function will wait until it gets a response from the server. I’ll read more on this.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;send&lt;/code&gt; will then… you guessed it, send the reqeust.&lt;/p&gt;
-
-&lt;p&gt;Within xhr, it will contain certain information about the request. &lt;code class=&quot;highlighter-rouge&quot;&gt;console.log(xhr.statusCode);&lt;/code&gt; will return you the status code of the HTTP request. 
-&lt;strong&gt;TODO&lt;/strong&gt;: Read up more about these methods that &lt;code class=&quot;highlighter-rouge&quot;&gt;xhr&lt;/code&gt; contain.&lt;/p&gt;
-
-&lt;h2 id=&quot;parsing-the-response&quot;&gt;Parsing the Response&lt;/h2&gt;
-
-&lt;p&gt;There are two types of responses that the API can return you. Either &lt;em&gt;XML&lt;/em&gt; or &lt;em&gt;JSON&lt;/em&gt;. Read the docs to find out which one the API is providing! So here’s what the response will contain:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Response line: three-digit HTTP code, I wouldn’t write them down here since they are easily ‘Google-able’.&lt;/li&gt;
-  &lt;li&gt;Header: this contains further information about server and its response.&lt;/li&gt;
-  &lt;li&gt;Body: basically, either &lt;em&gt;XML&lt;/em&gt; or &lt;em&gt;JSON&lt;/em&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;strong&gt;Parsing XML&lt;/strong&gt;&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;xmldoc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;xhr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;responseXML&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;With the above code, &lt;code class=&quot;highlighter-rouge&quot;&gt;xmldoc&lt;/code&gt; now contains the XML returned by the server.&lt;/p&gt;
-
-&lt;p&gt;XML stands for E&lt;strong&gt;x&lt;/strong&gt;tensible &lt;strong&gt;M&lt;/strong&gt;arkup &lt;strong&gt;L&lt;/strong&gt;anguage. It’s like HTML, but with all sorts of tags that you create yourself. Now that you have xmldoc, you could easily access items in the response body by applying methods/accessing members of &lt;code class=&quot;highlighter-rouge&quot;&gt;xmldoc&lt;/code&gt;. Still have to read up more about this.&lt;/p&gt;
-
-&lt;p&gt;On the other hand…&lt;/p&gt;
-
-&lt;p&gt;JSON stands for &lt;strong&gt;J&lt;/strong&gt;ava&lt;strong&gt;S&lt;/strong&gt;cript &lt;strong&gt;O&lt;/strong&gt;bject &lt;strong&gt;N&lt;/strong&gt;otation. It’s exactly how you would create a new anonymous JavaScript object.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;new_obj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;in JSON would be…&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;a&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;b&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;c&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;I’ve read somewhere that there is no such thing as &lt;code class=&quot;highlighter-rouge&quot;&gt;responseJSON&lt;/code&gt; method for &lt;code class=&quot;highlighter-rouge&quot;&gt;XMLHttpRequest&lt;/code&gt; object, only &lt;code class=&quot;highlighter-rouge&quot;&gt;responseText&lt;/code&gt;. So if the response is not in XML, it should be stored as &lt;code class=&quot;highlighter-rouge&quot;&gt;responseText&lt;/code&gt;. In that case, &lt;code class=&quot;highlighter-rouge&quot;&gt;var jsonDoc = xhr.responseText;&lt;/code&gt; would return you the JSON response body. (I’ll correct this if it’s wrong)&lt;/p&gt;
-
-&lt;p&gt;That’s about all that I learnt for APIs with JavaScript. Most of it was from &lt;a href=&quot;http://www.codecademy.com/courses/javascript-beginner-en-EID4t/0/1&quot;&gt;this&lt;/a&gt; course here by Codecademy. Really learnt quite a bit, despite playing around with APIs for quite a while. I’ll &lt;strong&gt;definitely&lt;/strong&gt; be playing around with a few APIs over the semester break, and let’s see how much can I do with it. :)&lt;/p&gt;
-
-&lt;p&gt;Hope to keep this learning streak going!&lt;/p&gt;
-
-</description>
-        <pubDate>Thu, 27 Nov 2014 00:00:00 -0800</pubDate>
-        <link>http://xbili.com/2014/11/27/APIs-with-JavaScript.html</link>
-        <guid isPermaLink="true">http://xbili.com/2014/11/27/APIs-with-JavaScript.html</guid>
         
         
       </item>
