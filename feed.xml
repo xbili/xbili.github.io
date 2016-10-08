@@ -6,12 +6,12 @@
 </description>
     <link>http://xbili.com/</link>
     <atom:link href="http://xbili.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 08 Oct 2016 00:12:48 -0700</pubDate>
-    <lastBuildDate>Sat, 08 Oct 2016 00:12:48 -0700</lastBuildDate>
+    <pubDate>Sat, 08 Oct 2016 00:15:22 -0700</pubDate>
+    <lastBuildDate>Sat, 08 Oct 2016 00:15:22 -0700</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
-        <title>Lets Write Isomorphic React</title>
+        <title>Let&#39;s Write An Isomorphic React App</title>
         <description>&lt;p&gt;﻿—
 layout: post
 title: “Let’s Write an Isomorphic React App!”
@@ -448,8 +448,8 @@ app.listen(port, err =&amp;gt; {
 &lt;p&gt;Hopefully more progress can be made this weekend! Time to push the code and hit the sacks. :)&lt;/p&gt;
 </description>
         <pubDate>Fri, 07 Oct 2016 00:00:00 -0700</pubDate>
-        <link>http://xbili.com/2016/10/07/Lets-Write-Isomorphic-React.html</link>
-        <guid isPermaLink="true">http://xbili.com/2016/10/07/Lets-Write-Isomorphic-React.html</guid>
+        <link>http://xbili.com/2016/10/07/Let's-Write-An-Isomorphic-React-App.html</link>
+        <guid isPermaLink="true">http://xbili.com/2016/10/07/Let's-Write-An-Isomorphic-React-App.html</guid>
         
         
       </item>
