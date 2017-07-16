@@ -66,6 +66,10 @@ main {
   }
 
   .project {
+    pre {
+      white-space: pre-wrap;
+    }
+
     .categories,
     .links {
       list-style-type: none;
@@ -106,6 +110,17 @@ main {
       }
       span.badge.badge-pill.badge-default.coursework {
         background-color: #823200;
+      }
+    }
+  }
+}
+
+
+@media only screen and (max-width : 768px) {
+  main {
+    .project {
+      h4, pre {
+        text-align: center;
       }
     }
   }
