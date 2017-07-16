@@ -1,0 +1,23 @@
+---
+layout: default
+---
+
+<main role="main">
+  <div class="container mt-3">
+    <h1 class="mb-3">About</h1>
+
+    {{ content }}
+
+    <h1 id="experience" class="mt-5 mb-3">Work Experience</h1>
+
+    {% for work in site.work %}
+      {% include work.html work=work %}
+    {% endfor %}
+
+    <h1 id="projects" class="mt-5 mb-3">Projects</h1>
+
+    {% for project in site.projects %}
+      {% include project.html project=project %}
+    {% endfor %}
+  </div>
+</main>
