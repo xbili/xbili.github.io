@@ -1,0 +1,15 @@
+<article class="card">
+  <div class="card-block">
+    <h4 class="card-title">{{ post.title }}</h4>
+    <pre class="card-title">{{ post.date | date: '%d %B %Y' }}</pre>
+
+    {{ post.content | truncatewords: 50 }}
+
+    <a href="{{ post.url }}">Read more</a>
+  </div>
+  <div class="card-footer">
+    {% for category in post.categories %}
+    <span class="badge badge-pill badge-default {{ category }}">{{ category }}</span>
+    {% endfor %}
+  </div>
+</article>
