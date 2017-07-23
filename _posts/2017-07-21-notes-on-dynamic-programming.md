@@ -1,6 +1,8 @@
 ---
 layout: post
 title: Notes on Dynamic Programming
+description: >
+    It's been quite a while since I've touched algorithms, and I thought it'd be a good time to revise key concepts from time to time. I shall try and keep up a habit of going through important Data Structures and Algorithm concepts every Sunday afternoon, and write a blog post about it before dinner.
 date: 2017-07-21 22:00:00 +0800
 categories: programming
 ---
