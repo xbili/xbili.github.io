@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>{{ site.title }}</title>
+    {% if page.url == "/"%}
+      <title>{{ site.title }}</title>
+    {% else %}
+      <title>{{ page.title }}</title>
+    {% endif %}
 
     {% include facebook-og.html %}
 
