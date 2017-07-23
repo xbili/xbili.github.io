@@ -20,7 +20,7 @@
 
     {% include footer.html %}
 
-    {% if site.env == 'production' %}
+    {% if jekyll.environment == 'production' %}
       {% include ga.html %}
     {% endif %}
 
