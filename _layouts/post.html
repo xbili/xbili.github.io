@@ -1,0 +1,17 @@
+---
+layout: default
+---
+
+{% include header.html %}
+
+<main role="main">
+  <div class="container mt-3 mb-3">
+    <a href="/posts">Back</a>
+    <article>
+      <h2 class="text-center">{{ page.title }}</h2>
+      <pre class="text-center">{{ page.date | date: '%d %B %Y' }}</pre>
+      {{ page.content }}
+    </article>
+    <a href="/posts">Back</a>
+  </div>
+</main>
