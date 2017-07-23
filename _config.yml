@@ -28,6 +28,7 @@ resume_link: 'https://www.dropbox.com/s/soivxnapy7vj9c5/BiliResume-Public.pdf?dl
 
 # Build settings
 markdown: kramdown
+highlighter: rouge
 plugins:
   - jekyll-feed
 
