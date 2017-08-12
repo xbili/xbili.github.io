@@ -2,12 +2,11 @@
 layout: home
 ---
 
-I am a rising senior undergraduate in Computer Science at National University
-of Singapore.
+I am a senior undergraduate in Computer Science at National University of
+Singapore.
 
 My interests lies in **Artificial Intelligence** and **Software Engineering**.
-I dabble in a lot of **Python** and **JavaScript**, with a tiny dash of
-**Rails** development.
+I dabble in a lot of **Python** and **JavaScript**.
 
 I am an awardee of the Industry Preparation for Pre-graduate (iPREP)
 programme by iDA. I am also currently enrolled under the von Neumann
@@ -30,5 +29,5 @@ University.
 During my free time, I enjoy swimming, basketball, and occasionally flaunting
 my very limited musical flair on the electric guitar and piano.
 
-I'm also an avid lover of musicals, Hamilton, Wicked, and Les Miserables are some of my
-favorites. :)
+I'm also an avid lover of musicals, Hamilton, Wicked, and Les Miserables are
+some of my favorites. :)
