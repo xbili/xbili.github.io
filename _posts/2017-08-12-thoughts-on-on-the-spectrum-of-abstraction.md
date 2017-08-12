@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Thoughts On: On the Spectrum of Abstraction
+title: "Thoughts On: On the Spectrum of Abstraction"
 description: >
     I came across this talk from React Europe Conference 2016 online and was
     particularly enlightened by some of the great points mentioned by Cheng Lou.
