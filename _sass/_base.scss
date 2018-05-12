@@ -1,12 +1,17 @@
+$primary: #DD403A;
+$off: #FFFCE8;
+$dark: #3E363F;
+
 .header {
-  background-color: aliceblue;
+  background-color: $dark;
+  color: $off;
 
   .title {
-    font-family: 'Coming Soon', sans-serif;
+    font-family: 'Montserrat', sans-serif;
   }
 
   p {
-    font-family: 'Coming Soon', sans-serif;
+    font-family: 'Montserrat', sans-serif;
   }
 
   .links .nav {
@@ -14,15 +19,19 @@
   }
 
   .nav a.nav-link {
-    color: #333;
+    color: $off;
 
     &:hover {
-      color: #2fdab8;
+      color: $primary;
     }
   }
 
   img {
     max-height: 250px;
+  }
+
+  pre {
+    color: $off;
   }
 }
 
@@ -46,12 +55,13 @@ main {
   font-family: 'Lato', sans-serif;
 
   h1 {
+    color: #333;
     text-align: center;
-    font-family: 'Coming Soon', sans-serif;
+    font-family: 'Montserrat', sans-serif;
   }
 
   a {
-    color: #2fdab8;
+    color: $primary;
     &:hover {
       color: #333;
       text-decoration: none;
@@ -139,7 +149,7 @@ main {
     color: white;
 
     &:hover {
-      color: #2fdab8;
+      color: $primary;
     }
   }
 }
