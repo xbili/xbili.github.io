@@ -2,9 +2,13 @@
 layout: home
 ---
 
-Computer Science Graduate from the National University of Singapore
-(NUS). My interest lies in **Artificial Intelligence** and
-**Software Engineering**.
+Computer Science Graduate from the National University of Singapore.
+(NUS)
+
+#### Interests
+
+My interests lies in **Artificial Intelligence** and **Software Engineering**.
+I also play around with computer systems and architecture from time to time.
 
 #### Awards and Programs
 
@@ -12,6 +16,7 @@ Computer Science Graduate from the National University of Singapore
 - NUS Overseas Colleges (NOC) - Silicon Valley Batch 29
 - Industry Preparation for Pre-graduates Programme (iPREP) by the Infocomm
 Development Authority of Singapore (iDA)
+- Final Year Research Thesis: Deep Learning on FPGAs
 
 #### Tidbits
 
