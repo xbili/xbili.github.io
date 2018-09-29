@@ -2,11 +2,12 @@
 layout: home
 ---
 
-Computer Science Graduate from the National University of Singapore (NUS).
-My interests lies in Artificial Intelligence and Software Engineering.
-I also play around with computer systems and architecture from time to time.
+Software Engineer at Edison Software. National University of Singapore class
+of 2018, graduated with distinction and focus areas in Software Engineering and
+Artificial Intelligence. I also play around with computer systems and
+architecture from time to time.
 
-#### Awards and Programs
+#### Academic Achievements
 
 - Final Year Research Thesis: Deep Learning on FPGAs
 - von Neumann Programme (vNP)

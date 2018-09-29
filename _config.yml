@@ -14,10 +14,9 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: xbili
-email: xbili@u.nus.edu
+email: xubili93@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-  I am a rising senior undergraduate in Computer Science at National University
-  of Singapore.
+  Software Engineer at Edison Software
 baseurl: "" # the subpath of your site, e.g. /blog
 imageurl: "/images/"
 url: "http://xbili.com" # the base hostname & protocol for your site, e.g. http://example.com
