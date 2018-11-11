@@ -5,12 +5,10 @@ layout: default
 {% include header.html %}
 
 <main role="main">
-  <div class="container mt-3">
-    <h1 class="mb-3">About</h1>
-
+  <div class="container mt-3 pt-3">
     {{ content }}
 
-    <h1 id="experience" class="mt-5 mb-3">Work Experience</h1>
+    <h1 id="experience" class="mt-5 mb-5">Previous Work Experiences</h1>
 
     {% for work in site.work %}
       {% include work.html work=work %}

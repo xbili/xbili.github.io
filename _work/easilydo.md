@@ -1,5 +1,5 @@
 ---
-title: Platform Engineering Intern
+title: Software Engineering Intern
 company: Edison
 image: easilydo.jpg
 location: Mountain View, CA
