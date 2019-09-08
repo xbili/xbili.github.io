@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[2],{219:function(e,t,n){"use strict";n.r(t);var a=n(0),l=n.n(a),o=n(216),r=n(215);t.default=function(){return l.a.createElement(o.a,null,l.a.createElement(r.a,{title:"Not found"}),l.a.createElement("h1",{className:"font-black font-header"},"NOT FOUND"),l.a.createElement("p",null,"Nothing of interest here, I probably deleted this post."))}}}]);
+//# sourceMappingURL=component---src-pages-404-js-2afbc856ff6771d98b7b.js.map
