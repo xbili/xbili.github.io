@@ -35,8 +35,8 @@
     "flow-bin": "^0.107.0",
     "flow-typed": "^2.6.1",
     "gh-pages": "^2.1.1",
-    "husky": "^3.0.5",
-    "lint-staged": "^9.2.5",
+    "husky": ">=4",
+    "lint-staged": ">=10",
     "prettier": "^1.18.2",
     "tailwindcss": "^1.7.5"
   },
@@ -62,7 +62,11 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged"
+      "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.{js,jsx,json,md}": "prettier --write"
   }
 }
