@@ -44,7 +44,7 @@ body {
 }
 
 .post-content figure img {
-  @apply mb-1
+  @apply mb-1;
 }
 
 .post-content figcaption {
@@ -63,8 +63,13 @@ body {
   @apply flex justify-end text-sm;
 }
 
+.post-content .wp-block-separator {
+  @apply my-5;
+}
+
 .post-content ul,
 .post-content ol {
+  @apply text-gray-800;
   @apply pl-5 mb-8 leading-normal;
 }
 

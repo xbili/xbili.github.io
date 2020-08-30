@@ -10,8 +10,8 @@ type Props = {
 }
 
 const PostListItem = ({ slug, title, excerpt, date }: Props) => (
-  <div className="my-3 md:my-5">
-    <Link to={`/${slug}`} className="no-underline">
+  <div className="my-5 md:my-8">
+    <Link to={`/${slug}`} className="no-underline inline-block">
       <h2
         className="font-black text-xl md:text-3xl text-gray-800 hover:text-blue-700 font-header"
         dangerouslySetInnerHTML={{ __html: title }}

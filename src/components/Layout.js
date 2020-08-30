@@ -22,13 +22,13 @@ const Layout = ({ children }: Props) => {
   `)
 
   return (
-    <div className="flex flex-col items-center min-h-screen">
+    <div className="w-full">
       <Header
         siteTitle={data.site.siteMetadata.title}
         siteDescription={data.site.siteMetadata.description}
       />
-      <div className="flex-grow w-full md:w-1/4 px-5 md:px-0 flex flex-col mt-5">
-        <main className="flex-grow flex flex-col">{children}</main>
+      <div className="container mx-auto px-5 mt-5">
+        <main>{children}</main>
         <footer className="flex flex-col items-center text-xs text-gray-600 py-3">
           <div className="flex mr-3">
             <FooterLink to="https://github.com/xbili">GitHub</FooterLink>
